@@ -1,0 +1,9 @@
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/minesweeper.dir
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/edit_cache.dir
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/rebuild_cache.dir
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/list_install_components.dir
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/install.dir
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/install/local.dir
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/install/strip.dir
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/minesweeper_autogen_timestamp_deps.dir
+/Users/anilkose/Desktop/CMPE 230/HOMEWORK3/minesweeper/build/Qt_6_7_0_for_macOS-Debug/CMakeFiles/minesweeper_autogen.dir
