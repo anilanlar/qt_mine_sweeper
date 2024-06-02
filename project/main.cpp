@@ -11,6 +11,7 @@
 #include <QLabel>
 #include <QMouseEvent>
 
+// Cell class represents each cell in the Minesweeper game
 class Cell : public QPushButton {
     Q_OBJECT
 
@@ -24,8 +25,10 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
 };
 
+// Constructor for Cell class
 Cell::Cell(QWidget *parent) : QPushButton(parent) {}
 
+// Handle mouse press events
 void Cell::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::RightButton) {
         emit rightClicked();
@@ -34,6 +37,7 @@ void Cell::mousePressEvent(QMouseEvent *event) {
     }
 }
 
+// Minesweeper class represents the entire Minesweeper game
 class Minesweeper : public QWidget {
     Q_OBJECT
 
@@ -72,6 +76,7 @@ private slots:
     void handleRightClick(int row, int col);
 };
 
+// Constructor for Minesweeper class
 Minesweeper::Minesweeper(int rows, int columns, int mines, QWidget *parent)
     : QWidget(parent), score(0), hintRow(-1), hintCol(-1), hintGiven(false), rows(rows), columns(columns), mines(mines) {
     grid.resize(rows, std::vector<int>(columns, 0));
@@ -121,6 +126,7 @@ Minesweeper::Minesweeper(int rows, int columns, int mines, QWidget *parent)
     setLayout(mainLayout);
 }
 
+// Place mines randomly on the grid
 void Minesweeper::placeMines() {
     int count = 0;
     while (count < mines) {
@@ -133,6 +139,7 @@ void Minesweeper::placeMines() {
     }
 }
 
+// Count adjacent mines around a cell
 int Minesweeper::countAdjacentMines(int row, int col) {
     int count = 0;
     for (int i = -1; i <= 1; ++i) {
@@ -147,6 +154,7 @@ int Minesweeper::countAdjacentMines(int row, int col) {
     return count;
 }
 
+// Reveal a cell and update the game state
 void Minesweeper::revealCell(int row, int col) {
     if (revealed[row][col]) {
         return;
@@ -176,6 +184,7 @@ void Minesweeper::revealCell(int row, int col) {
     }
 }
 
+// Handle game over scenario
 void Minesweeper::gameOver() {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < columns; ++j) {
@@ -189,6 +198,7 @@ void Minesweeper::gameOver() {
     resetGame();
 }
 
+// Check if the player has won the game
 void Minesweeper::checkWin() {
     bool win = true;
     for (int i = 0; i < rows; ++i) {
@@ -205,6 +215,7 @@ void Minesweeper::checkWin() {
     }
 }
 
+// Reset the game to its initial state
 void Minesweeper::resetGame() {
     score = 0;
     scoreLabel->setText("Score: 0");
@@ -226,6 +237,7 @@ void Minesweeper::resetGame() {
     }
 }
 
+// Check if a cell is safe to reveal
 bool Minesweeper::isSafeCell(int row, int col) {
     if (revealed[row][col] || grid[row][col] == 9) {
         return false;
@@ -245,6 +257,7 @@ bool Minesweeper::isSafeCell(int row, int col) {
     return false;
 }
 
+// Find a safe cell to reveal
 std::pair<int, int> Minesweeper::findSafeCell() {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < columns; ++j) {
@@ -256,6 +269,7 @@ std::pair<int, int> Minesweeper::findSafeCell() {
     return {-1, -1};
 }
 
+// Provide a hint to the player
 void Minesweeper::giveHint() {
     if (hintGiven && hintRow != -1 && hintCol != -1 && !revealed[hintRow][hintCol]) {
         revealCell(hintRow, hintCol);
@@ -277,6 +291,7 @@ void Minesweeper::giveHint() {
     }
 }
 
+// Handle button click event
 void Minesweeper::handleButtonClick(int row, int col) {
     if (hintGiven && row == hintRow && col == hintCol) {
         hintRow = -1;
@@ -291,14 +306,17 @@ void Minesweeper::handleButtonClick(int row, int col) {
     }
 }
 
+// Handle restart button click event
 void Minesweeper::handleRestartClick() {
     resetGame();
 }
 
+// Handle hint button click event
 void Minesweeper::handleHintClick() {
     giveHint();
 }
 
+// Handle right-click event
 void Minesweeper::handleRightClick(int row, int col) {
     if (flagged[row][col]) {
         flagged[row][col] = false;
@@ -311,6 +329,7 @@ void Minesweeper::handleRightClick(int row, int col) {
     }
 }
 
+// Entry point of the application
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     Minesweeper minesweeper(10, 10, 10); // Default grid size 10x10 with 10 mines
